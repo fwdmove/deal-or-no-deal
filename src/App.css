@@ -39,10 +39,10 @@
 
 .topic-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   width: 100%;
-  max-width: 600px;
+  max-width: 780px;
 }
 
 .topic-card {
@@ -335,10 +335,14 @@
 }
 
 /* ── Responsive ── */
+@media (max-width: 640px) {
+  .topic-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 480px) {
   .screen { padding: 32px 16px 48px; }
   .game-title { font-size: 2.2rem; }
-  .topic-grid { grid-template-columns: 1fr; }
+  .topic-grid { grid-template-columns: repeat(2, 1fr); }
   .cases-grid { grid-template-columns: repeat(2, 1fr); }
   .briefcase-wrap { height: 120px; }
   .final-cards { grid-template-columns: 1fr; }
