@@ -1,0 +1,22 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--sans);
+  font-size: 16px;
+  color: #111;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+body { margin: 0; background: #fff; }
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3 { margin: 0; }
+p { margin: 0; }
+button { cursor: pointer; font-family: inherit; }

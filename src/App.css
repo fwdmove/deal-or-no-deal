@@ -1,0 +1,345 @@
+/* ── Layout ── */
+.app {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.screen {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+}
+
+/* ── Topic Select ── */
+.topic-screen {
+  gap: 16px;
+}
+
+.game-title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.game-subtitle {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.topic-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 20px;
+  border: 2px solid #e5e5e5;
+  border-radius: 16px;
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+  text-decoration: none;
+}
+
+.topic-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+  transform: translateY(-2px);
+}
+
+.topic-emoji {
+  font-size: 2.5rem;
+}
+
+.topic-emoji.large {
+  font-size: 3.5rem;
+}
+
+.topic-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.topic-rounds {
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Round Header ── */
+.round-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.round-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+.round-category {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: -0.5px;
+}
+
+.round-hint {
+  color: #666;
+  font-size: 0.95rem;
+  min-height: 1.4em;
+}
+
+/* ── Cases Grid ── */
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 640px;
+}
+
+/* ── Briefcase ── */
+.briefcase-wrap {
+  perspective: 600px;
+  height: 140px;
+  cursor: pointer;
+}
+
+.briefcase-wrap.disabled {
+  cursor: default;
+}
+
+.briefcase-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.briefcase-wrap.open .briefcase-inner {
+  transform: rotateY(180deg);
+}
+
+.briefcase-front,
+.briefcase-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Front */
+.briefcase-front {
+  background: #1a1a1a;
+  border: 2px solid #333;
+  transition: border-color 0.15s;
+}
+
+.briefcase-wrap:not(.disabled):not(.open):hover .briefcase-front {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.case-svg {
+  width: 64px;
+  height: auto;
+}
+
+.case-body { fill: #2a2a2a; stroke: #888; stroke-width: 1; }
+.case-handle { fill: none; stroke: #c9a84c; stroke-width: 2; }
+
+/* Back */
+.briefcase-back {
+  background: #fff;
+  border: 2px solid #e5e5e5;
+  transform: rotateY(180deg);
+  padding: 12px;
+}
+
+.briefcase-wrap.winner .briefcase-back {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.case-content {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #111;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.briefcase-wrap.winner .case-content {
+  color: var(--accent);
+}
+
+/* ── Actions ── */
+.round-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 52px;
+  align-items: center;
+}
+
+.btn {
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: 2px solid transparent;
+  transition: all 0.15s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #fff;
+  color: #111;
+  border-color: #ddd;
+}
+
+.btn-secondary:hover {
+  border-color: #aaa;
+  transform: translateY(-1px);
+}
+
+/* ── Reveal Screen ── */
+.reveal-screen .cases-grid {
+  pointer-events: none;
+}
+
+.round-winner-line {
+  color: #333;
+  font-size: 1rem;
+}
+
+.accent-text {
+  color: var(--accent);
+}
+
+.missed-line {
+  font-size: 0.9rem;
+  color: #888;
+  max-width: 500px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ── Final Screen ── */
+.final-screen {
+  gap: 24px;
+}
+
+.final-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.final-header h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #111;
+}
+
+.final-subtitle {
+  color: #666;
+}
+
+.final-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 560px;
+}
+
+.final-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px 24px;
+  border: 2px solid #eee;
+  border-radius: 14px;
+  text-align: left;
+  border-left: 4px solid var(--accent);
+}
+
+.final-card-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #999;
+}
+
+.final-card-pick {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #111;
+}
+
+.final-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .screen { padding: 32px 16px 48px; }
+  .game-title { font-size: 2.2rem; }
+  .topic-grid { grid-template-columns: 1fr; }
+  .cases-grid { grid-template-columns: repeat(2, 1fr); }
+  .briefcase-wrap { height: 120px; }
+  .final-cards { grid-template-columns: 1fr; }
+}
