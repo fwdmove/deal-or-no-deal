@@ -9,7 +9,7 @@ export default function RevealScreen({ topic, round, caseOrder, winnerIdx, round
         <span className="round-pill">Round {roundIndex + 1} of {totalRounds}</span>
         <h2 className="round-category">Here's what was in the other cases</h2>
         <p className="round-winner-line">
-          Your pick: <strong className="accent-text">{caseOrder[winnerIdx]}</strong>
+          Your pick: <strong>{caseOrder[winnerIdx]}</strong>
         </p>
       </div>
 
@@ -20,7 +20,8 @@ export default function RevealScreen({ topic, round, caseOrder, winnerIdx, round
             number={idx + 1}
             isOpen={true}
             content={item}
-            isWinner={idx === winnerIdx}
+            isWinner={idx !== winnerIdx}
+            isPick={idx === winnerIdx}
             disabled={true}
           />
         ))}

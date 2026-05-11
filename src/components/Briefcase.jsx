@@ -1,7 +1,7 @@
-export default function Briefcase({ number, isOpen, content, isWinner, onClick, disabled }) {
+export default function Briefcase({ number, isOpen, content, isWinner, isPick, onClick, disabled }) {
   return (
     <div
-      className={`briefcase-wrap ${isOpen ? 'open' : ''} ${isWinner ? 'winner' : ''} ${disabled ? 'disabled' : ''}`}
+      className={`briefcase-wrap ${isOpen ? 'open' : ''} ${isWinner ? 'winner' : ''} ${isPick ? 'pick' : ''} ${disabled ? 'disabled' : ''}`}
       onClick={!disabled ? onClick : undefined}
     >
       <div className="briefcase-inner">
