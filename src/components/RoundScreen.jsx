@@ -10,8 +10,14 @@ function shuffle(arr) {
   return a;
 }
 
+function drawPool(good, bad) {
+  const g = shuffle([...good]).slice(0, 4);
+  const b = shuffle([...bad]).slice(0, 2);
+  return shuffle([...g, ...b]);
+}
+
 export default function RoundScreen({ topic, round, roundIndex, totalRounds, onRoundDone }) {
-  const [caseOrder] = useState(() => shuffle(round.options));
+  const [caseOrder] = useState(() => drawPool(round.good, round.bad));
   const [firstPick, setFirstPick] = useState(null);
   const [swapPick, setSwapPick] = useState(null);
   const [phase, setPhase] = useState('picking'); // picking | decide | swapping | done
